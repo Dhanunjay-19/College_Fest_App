@@ -1,0 +1,55 @@
+<div class="scanner-container">
+  <div class="card">
+
+    <!-- Clean Flex Header -->
+    <div class="header-bar">
+      <div>
+        <h2>Gate Check-In</h2>
+        <p>Enter unique ticket code</p>
+      </div>
+      <button (click)="logout()" class="logout-btn">
+        Logout
+      </button>
+    </div>
+
+    <!-- Input Form -->
+    <div class="input-section" *ngIf="!scanResult && !errorMessage && !isProcessing">
+      <input
+        type="text"
+        [(ngModel)]="uniqueCode"
+        placeholder="e.g. FEST-12345"
+        (keyup.enter)="verifyCode()"
+        class="code-input"
+        autocomplete="off">
+
+      <button (click)="verifyCode()" [disabled]="!uniqueCode" class="verify-btn">
+        Verify Ticket
+      </button>
+    </div>
+
+    <!-- Loading State -->
+    <div *ngIf="isProcessing" class="processing">
+      <div class="spinner"></div>
+      <p>Validating...</p>
+    </div>
+
+    <!-- Success State -->
+    <div *ngIf="scanResult && !errorMessage && !isProcessing" class="result-box success">
+      <div class="icon">✅</div>
+      <h3>{{ scanResult.status || 'CHECK-IN SUCCESSFUL' }}</h3>
+      <p class="name" *ngIf="scanResult.studentName">{{ scanResult.studentName }}</p>
+      <p class="roll" *ngIf="scanResult.rollNumber">{{ scanResult.rollNumber }}</p>
+      <button (click)="resetForm()" class="verify-btn">Check Next Student</button>
+    </div>
+
+    <!-- Error State -->
+    <div *ngIf="errorMessage && !isProcessing" class="result-box error">
+      <div class="icon">❌</div>
+      <h3>{{ errorMessage }}</h3>
+      <p class="name" *ngIf="scanResult?.studentName">{{ scanResult.studentName }}</p>
+      <p class="roll" *ngIf="scanResult?.rollNumber">{{ scanResult.rollNumber }}</p>
+      <button (click)="resetForm()" class="logout-btn" style="width: 100%;">Check Next Student</button>
+    </div>
+
+  </div>
+</div>

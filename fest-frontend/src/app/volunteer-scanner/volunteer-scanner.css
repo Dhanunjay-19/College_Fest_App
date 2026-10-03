@@ -1,0 +1,110 @@
+.scanner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #111827;
+  padding: 1rem;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+.card {
+  background: white;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+/* Perfect Header Alignment */
+.header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1f2937;
+  color: white;
+  padding: 1.25rem 1.5rem;
+}
+
+.header-bar h2 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.25rem;
+}
+
+.header-bar p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+/* Compact, clean Logout button */
+.logout-btn {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.8rem;
+  white-space: nowrap; /* Prevents text from breaking */
+  transition: background-color 0.2s;
+}
+
+.logout-btn:hover {
+  background-color: #dc2626;
+}
+
+.input-section {
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.code-input {
+  width: 100%;
+  padding: 0.85rem;
+  font-size: 1.25rem;
+  text-align: center;
+  text-transform: uppercase;
+  border: 2px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.code-input:focus {
+  border-color: #2563eb;
+}
+
+.processing {
+  text-align: center;
+  padding: 3rem 1rem;
+  font-weight: bold;
+  color: #4b5563;
+}
+
+.result-box { text-align: center; padding: 2.5rem 1.5rem; }
+.result-box .icon { font-size: 3.5rem; margin-bottom: 0.75rem; }
+.result-box h3 { margin: 0 0 0.75rem 0; font-size: 1.25rem; }
+.result-box .name { font-size: 1.15rem; font-weight: bold; margin: 0.5rem 0; }
+.result-box .roll { color: #6b7280; margin-bottom: 1.5rem; }
+
+.success h3 { color: #16a34a; }
+.error h3 { color: #dc2626; }
+
+.verify-btn {
+  width: 100%;
+  padding: 0.85rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #2563eb;
+  color: white;
+}
+
+.verify-btn:disabled { background-color: #93c5fd; cursor: not-allowed; }

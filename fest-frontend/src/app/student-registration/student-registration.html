@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="card">
+    <h2>Student Fest Registration</h2>
+
+    <!-- Registration Form -->
+    <div *ngIf="!uniqueCode">
+      <p class="subtitle">Enter your details to generate your entry pass.</p>
+
+      <div class="form-group">
+        <label>DOST Id</label>
+        <input type="text" [(ngModel)]="student.rollNumber" placeholder="Enter your DOST Id">
+      </div>
+
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" [(ngModel)]="student.fullName" placeholder="Enter your Full Name">
+      </div>
+
+      <div class="form-group">
+        <label>Branch</label>
+        <select [(ngModel)]="student.branch">
+          <option value="" disabled selected>Select your branch</option>
+          <option *ngFor="let branch of branches" [value]="branch">{{ branch }}</option>
+        </select>
+      </div>
+
+      <div *ngIf="errorMessage" class="alert error">{{ errorMessage }}</div>
+
+      <button (click)="registerStudent()" [disabled]="isLoading">
+        {{ isLoading ? 'Processing...' : 'Generate Entry Pass' }}
+      </button>
+    </div>
+
+    <!-- Success Ticket View -->
+    <div *ngIf="uniqueCode" class="ticket-view">
+      <div class="alert success">{{ successMessage }}</div>
+      <h3>Your Entry Code</h3>
+      <div class="code-box">{{ uniqueCode }}</div>
+      <p class="note">Take a screenshot of this code. You will need to show it at the gate.</p>
+      <button class="secondary" (click)="uniqueCode = ''; student = {rollNumber: '', fullName: '', branch: ''}">
+        Register Another Student
+      </button>
+    </div>
+  </div>
+</div>

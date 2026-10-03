@@ -1,0 +1,66 @@
+<div class="dashboard-container">
+  <div class="header" style="display: flex; justify-content: space-between; align-items: center;">
+    <div>
+      <h2>Fest Admin Dashboard</h2>
+      <p>Live attendance and data management</p>
+    </div>
+    <button
+      (click)="logout()"
+      style="background-color: #ef4444; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: bold;">
+      Logout
+    </button>
+  </div>
+
+  <!-- Live Statistics Cards -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <h3>Total Eligible</h3>
+      <div class="number">{{ stats.totalEligible }}</div>
+      <p>from DOST Excel</p>
+    </div>
+
+    <div class="stat-card">
+      <h3>Registered</h3>
+      <div class="number text-blue">{{ stats.totalRegistered }}</div>
+      <p>generated tickets</p>
+    </div>
+
+    <div class="stat-card">
+      <h3>Checked In</h3>
+      <div class="number text-green">{{ stats.totalCheckedIn }}</div>
+      <p>passed the gate</p>
+    </div>
+  </div>
+
+  <!-- Excel Upload Section -->
+  <div class="upload-section">
+    <h3>Upload DOST Student Data</h3>
+    <p class="upload-note">Files must be converted to .xlsx format before uploading.</p>
+
+    <div class="upload-controls">
+      <input
+        type="file"
+        id="fileUpload"
+        accept=".xlsx"
+        (change)="onFileSelected($event)">
+
+      <button
+        (click)="uploadFile()"
+        [disabled]="!selectedFile || isUploading">
+        {{ isUploading ? 'Uploading...' : 'Upload Data' }}
+      </button>
+    </div>
+
+    <div *ngIf="uploadMessage" class="alert" [ngClass]="{'error': isError, 'success': !isError}">
+      {{ uploadMessage }}
+    </div>
+  </div>
+  <div class="export-section" style="margin-top: 2rem; text-align: center;">
+    <button
+      (click)="downloadReport()"
+      [disabled]="isDownloading"
+      style="padding: 10px 20px; background-color: #10b981; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold;">
+      {{ isDownloading ? 'Generating Excel...' : '⬇ Download Full Report' }}
+    </button>
+  </div>
+</div>

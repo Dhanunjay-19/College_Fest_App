@@ -1,0 +1,104 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f3f4f6;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  padding: 1rem;
+}
+
+.card {
+  background: white;
+  padding: 2.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  width: 100%;
+  max-width: 400px;
+}
+
+h2 {
+  margin-top: 0;
+  color: #1f2937;
+  text-align: center;
+}
+
+.subtitle {
+  color: #6b7280;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #374151;
+}
+
+input, select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  background-color: white;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+}
+
+button {
+  width: 100%;
+  padding: 0.85rem;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.2s;
+}
+
+button:hover { background-color: #1d4ed8; }
+button:disabled { background-color: #93c5fd; cursor: not-allowed; }
+button.secondary { background-color: #4b5563; }
+button.secondary:hover { background-color: #374151; }
+
+.alert {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+.error { background-color: #fee2e2; color: #dc2626; border: 1px solid #f87171; }
+.success { background-color: #dcfce3; color: #16a34a; border: 1px solid #4ade80; }
+
+.ticket-view { text-align: center; }
+
+.code-box {
+  background-color: #f8fafc;
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  padding: 1.5rem 1rem;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+  border: 2px dashed #94a3b8;
+  color: #0f172a;
+}
+
+.note { font-size: 0.9rem; color: #64748b; margin-bottom: 2rem; }

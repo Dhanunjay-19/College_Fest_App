@@ -44,7 +44,7 @@ export class AdminDashboardComponent implements OnInit {
     // Uses the dynamic token
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
 
-    this.http.get<any>('http://localhost:8080/api/admin/stats', { headers }).subscribe({
+    this.http.get<any>('https://college-fest-app.onrender.com/api/admin/stats', { headers }).subscribe({
       next: (data) => {
         this.stats = data;
         this.cdr.detectChanges();
@@ -79,7 +79,7 @@ export class AdminDashboardComponent implements OnInit {
     // Uses the dynamic token
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
 
-    this.http.post<any>('http://localhost:8080/api/admin/students/upload', formData, { headers }).subscribe({
+    this.http.post<any>('https://college-fest-app.onrender.com/api/admin/students/upload', formData, { headers }).subscribe({
       next: (response) => {
         this.uploadMessage = response.message || 'File uploaded successfully!';
 
@@ -113,7 +113,7 @@ export class AdminDashboardComponent implements OnInit {
     // Uses the dynamic token
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
 
-    this.http.get('http://localhost:8080/api/admin/export', { headers, responseType: 'blob' }).subscribe({
+    this.http.get('https://college-fest-app.onrender.com/api/admin/export', { headers, responseType: 'blob' }).subscribe({
       next: (blob) => {
         try {
           const url = window.URL.createObjectURL(blob);

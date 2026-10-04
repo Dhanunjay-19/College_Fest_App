@@ -50,7 +50,7 @@ export class VolunteerScannerComponent {
     // Uses the dynamic token
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
 
-    this.http.post<any>(`http://localhost:8080/api/volunteer/checkin/${cleanCode}`, {}, { headers }).subscribe({
+    this.http.post<any>(`https://college-fest-app.onrender.com/api/volunteer/checkin/${cleanCode}`, {}, { headers }).subscribe({
       next: (response) => {
         this.scanResult = response;
         this.isProcessing = false;

@@ -42,7 +42,7 @@ export class LoginComponent {
     this.errorMessage = '';
 
     // Update this URL to match your actual Spring Boot login endpoint
-    this.http.post<any>('https://college-fest-app.onrender.com/api/auth/login', {
+    this.http.post<any>('http://localhost:8080/api/auth/login', {
       username: this.username,
       password: this.password
     }).subscribe({

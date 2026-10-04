@@ -35,7 +35,7 @@ export class StudentRegistrationComponent implements OnInit {
   fetchBranches() {
     this.isFetchingBranches = true;
 
-    this.http.get<string[]>('http://college-fest-app.onrender.com/api/public/departments').subscribe({
+    this.http.get<string[]>('http://localhost:8080/api/public/departments').subscribe({
       next: (data) => {
         this.zone.run(() => {
           this.branches = data;
@@ -76,7 +76,7 @@ export class StudentRegistrationComponent implements OnInit {
       branch: this.student.branch
     };
 
-    this.http.post<any>('http://college-fest-app.onrender.com/api/public/register', payload).subscribe({
+    this.http.post<any>('http://localhost:8080/api/public/register', payload).subscribe({
       next: (response) => {
         this.zone.run(() => {
           this.successMessage = response.message;

@@ -117,9 +117,9 @@ public class ExcelHelperService {
         try (Workbook workbook = new XSSFWorkbook(); ByteArrayOutputStream out = new ByteArrayOutputStream()) {
             Sheet sheet = workbook.createSheet("Fest Data Report");
 
-            // 1. Create Header Row
+            // 1. Create Header Row (Added "Unique Code" here)
             Row headerRow = sheet.createRow(0);
-            String[] columns = {"S.No", "Student Name", "Dost_ID (Roll No)", "Branch", "Registered", "Checked In", "Checked In Time"};
+            String[] columns = {"S.No", "Student Name", "Dost_ID (Roll No)", "Branch", "Unique Code", "Registered", "Checked In", "Checked In Time"};
 
             for (int i = 0; i < columns.length; i++) {
                 Cell cell = headerRow.createCell(i);
@@ -144,18 +144,23 @@ public class ExcelHelperService {
                 row.createCell(2).setCellValue(student.getRollNumber());
                 row.createCell(3).setCellValue(student.getBranch() != null ? student.getBranch() : "N/A");
 
+                // --- NEW: Add Unique Code ---
+                // If the code is inside the Registration entity:
+                String uniqueCode = (reg != null && reg.getUniqueCode() != null) ? reg.getUniqueCode() : "N/A";
+                row.createCell(4).setCellValue(uniqueCode);
+
                 boolean isRegistered = (reg != null);
-                row.createCell(4).setCellValue(isRegistered ? "Yes" : "No");
+                row.createCell(5).setCellValue(isRegistered ? "Yes" : "No");
 
                 boolean isCheckedIn = isRegistered && "CHECKED_IN".equals(reg.getStatus());
-                row.createCell(5).setCellValue(isCheckedIn ? "Yes" : "No");
+                row.createCell(6).setCellValue(isCheckedIn ? "Yes" : "No");
 
                 // Format the time cleanly instead of raw .toString()
                 String time = "-";
                 if (isCheckedIn && reg.getCheckedInAt() != null) {
                     time = reg.getCheckedInAt().format(formatter);
                 }
-                row.createCell(6).setCellValue(time);
+                row.createCell(7).setCellValue(time); // Shifted to index 7
 
                 rowIdx++;
             }
@@ -166,5 +171,4 @@ public class ExcelHelperService {
         } catch (Exception e) {
             throw new RuntimeException("Failed to export data to Excel: " + e.getMessage());
         }
-    }
-}
+    }}

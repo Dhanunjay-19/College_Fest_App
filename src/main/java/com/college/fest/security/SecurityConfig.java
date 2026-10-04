@@ -72,7 +72,7 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         // Add your exact Vercel URL here (No trailing slash at the end)
-        configuration.setAllowedOrigins(List.of("https://lambent-axolotl-e22378.netlify.app"));
+        configuration.setAllowedOrigins(List.of("https://Dhanunjay-19.github.io"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);
